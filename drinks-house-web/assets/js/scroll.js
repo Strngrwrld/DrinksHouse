@@ -1,23 +1,21 @@
 $('document').ready(function() {
 
     //Mostrar y ocultar btn volver arriba
-    var volverArriba = $('#btnVolverArriba');
+    //var volverArriba = $('#btnVolverArriba');
 
     $(window).on('scroll', function() {
 
-        var proyectoOffsetTop = $('#tabs').offset().top;
+        var OffsetTop = $('#filter').offset().top;
         var scroll = $(window).scrollTop();
 
-        if (scroll >= proyectoOffsetTop / 2) {
+        if (scroll >= OffsetTop / 2) {
 
-            volverArriba.css('margin-right', '0');
+            $('#nav').css('background-color', '#00171F');
+        } else if (scroll <= OffsetTop / 2) {
 
-        } else if (scroll <= proyectoOffsetTop / 2) {
-
-            volverArriba.css('margin-right', '-60px');
+            $('#nav').css('background-color', 'transparent');
 
         }
-
     });
 
     //Movimiento suave de scroll Inicio y Volver Arriba
