@@ -5,10 +5,24 @@
     text-decoration: none !important;
     font-family: 'Lato', sans-serif;
     margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
 }
 
 a:hover {
     cursor: pointer;
+}
+
+.disabled {
+    color: grey;
+    opacity: 0.6;
+}
+
+.invisibility {
+    display: none;
 }
 
 
@@ -49,9 +63,6 @@ a:hover {
     font-family: 'Font Awesome 5 Brands';
 }
 
-
-/*UTILS CLASS*/
-
 .background-color-black {
     background-color: #000000;
 }
@@ -71,7 +82,6 @@ a:hover {
 
 #nav {
     width: 100%;
-    padding: 1em;
     color: white;
     position: fixed;
     z-index: 3;
@@ -80,19 +90,59 @@ a:hover {
 #nav h1 {
     float: left;
     color: white;
+    margin-right: 1em;
 }
 
-#nav a {
-    float: right;
-    background: none;
-    border: 0;
-    font: inherit;
-    line-height: normal;
-    overflow: visible;
-    padding: 0;
-    -webkit-appearance: button;
-    margin-left: 2em;
-    color: white;
+
+/*SECTION - FILTER */
+
+#filter {
+    width: 80%;
+    margin: 1em 4%;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+}
+
+#filter .shopping {
+    margin-left: 1em;
+}
+
+#filter select {
+    border: none;
+    padding: 1em;
+    min-width: 15%;
+    background-color: #ECECEC;
+    margin-right: 1em;
+}
+
+select:focus {
+    outline: none;
+}
+
+#browser {
+    min-width: 70%;
+    font-size: 1em;
+    font-weight: bolder;
+    border-radius: 2px;
+    background-color: #ECECEC;
+}
+
+#browser span {
+    color: #000000;
+}
+
+#browser input {
+    width: 90%;
+    border: none;
+    border-radius: 0px;
+    padding: 1em;
+    margin: 0;
+    background-color: #ECECEC;
+}
+
+input:focus {
+    outline: none;
 }
 
 #banner {
@@ -139,80 +189,47 @@ polygon.arrow-top {
 }
 
 
-/*SECTION - FILTER */
+/*SECTION - TITULO */
 
-#filter {
+#titulo {
     width: 100%;
-    padding: 2em;
-    background-color: #FFFFFF;
-    border-radius: 4px;
     text-align: center;
-}
-
-#filter h1 {
-    width: 5%;
-    font-size: 1.1em;
-    padding: 0.3em;
-    background-color: #00A8E8;
-    border-radius: 4px;
-    color: #FFFFFF;
-}
-
-#browser {
-    width: 80%;
-    margin-left: 10%;
-    padding: 1em;
-    font-size: 1em;
-    font-weight: bolder;
-}
-
-#browser select {
-    border: none;
-    padding: 1em;
-    width: 20%;
-}
-
-select:focus {
-    outline: none;
-}
-
-#browser input {
-    border: none;
-    border-radius: 0px;
-    width: 60%;
-    margin-left: 10%;
-    padding: 1em;
-    margin: 0;
-}
-
-input:focus {
-    outline: none;
-}
-
-#browser a {
-    margin: 0;
-    color: #FFFFFF;
-    padding: 1em;
-    background-color: #00A8E8;
+    margin-top: 5em;
+    display: inline-block;
 }
 
 
 /*SECTION - DRINKS */
 
 #drinks {
-    width: 100%;
+    width: 80%;
     background-color: #FFFFFF;
     color: #000000;
     border-radius: 4px;
-    text-align: center;
+    text-align: left;
+    margin-left: 10%;
     font-size: 0.7em;
     font-weight: none;
 }
 
 #drinks article {
-    max-width: 33.3%;
-    padding: 5em 1em;
+    max-width: 24%;
+    min-width: 24%;
+    padding: 5em 0em;
+    text-align: center;
     display: inline-block;
+}
+
+#drinks article img {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 5em 0em;
+    text-align: center;
+    display: inline-block;
+}
+
+#drinks article .nombre {
+    font-weight: bolder;
 }
 
 #drinks article .precio p {
@@ -225,11 +242,81 @@ input:focus {
 }
 
 
+/*Loading*/
+
+#loading {
+    width: 80%;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-radius: 4px;
+    text-align: left;
+    margin-left: 10%;
+    font-size: 0.7em;
+    font-weight: none;
+}
+
+#loading .mensaje {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 3em;
+    opacity: 0.4;
+}
+
+.spinner-wrapper {
+    width: 100%;
+    height: 100%;
+    margin-top: 10em;
+    background-color: #FFFFFF;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.spinner::before,
+.spinner:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+
+.spinner:before {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, #000000 0%, #00A8E8 100%);
+    animation: spin .5s infinite linear;
+}
+
+.spinner:after {
+    width: 90%;
+    height: 90%;
+    background-color: #FFFFFF;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 /*PAGINADO*/
 
 #paginado {
-    margin: 1em;
-    color: #000000;
+    background-color: #000000;
+    color: #FFFFFF;
+    margin: 2em 0em;
     padding: 1em;
     text-align: right;
 }
@@ -237,6 +324,7 @@ input:focus {
 #paginado select {
     border: none;
     padding: 5px;
+    margin: 0em 2em;
     width: 4%;
 }
 
@@ -250,9 +338,49 @@ input:focus {
 }
 
 
+/*PRE-FOOTER*/
+
+#preFooter {
+    width: 100%;
+    padding: 1em 1.5em;
+    text-align: center;
+    background-color: #FFFFFF;
+    display: flex;
+}
+
+#preFooter .contacto {
+    min-width: 40%;
+    text-align: left;
+}
+
+#preFooter .contacto li {
+    margin: 2em 0em;
+}
+
+#preFooter .atencion {
+    min-width: 40%;
+    text-align: left;
+}
+
+#preFooter .atencion li {
+    margin: 2em 0em;
+}
+
+#preFooter .mediosPago {
+    max-width: 20%;
+    float: left;
+    justify-content: left;
+}
+
+#preFooter .mediosPago svg {
+    max-width: 5em;
+}
+
+
 /*FOOTER*/
 
 #footer {
+    width: 100%;
     padding: 1em 1.5em;
     text-align: center;
     background-color: #1E1E1E;

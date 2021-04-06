@@ -1,8 +1,11 @@
 package com.gjimenez.drinkshouseserver.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,7 @@ public class ProductController {
 	private ProductResource productResource;
 	
 	@PostMapping
-	public ResponseEntity<ResponseDto<Page<Product>>> getProducts(@RequestBody PageDto pageDto){
-		return productResource.getProducts(pageDto);
+	public ResponseEntity<ResponseDto<Page<Product>>> getProducts(@RequestBody @Valid PageDto pageDto, BindingResult result){
+		return productResource.getProducts(pageDto,result);
 	}
 }
