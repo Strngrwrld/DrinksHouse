@@ -20,9 +20,30 @@ public class ProductService implements IProductService {
 	@Override
 	public Page<Product> getProducts(PageDto pageDto) {
 		
-		Pageable pageable = PageRequest.of(pageDto.getPageNo(), pageDto.getPageSize(), Sort.by(pageDto.getSortBy()));
-		 
-        return iProductRepository.findAll(pageable);
+		
+		Pageable pageable = null;
+		Sort sort = null;
+		switch (pageDto.getSortBy()) {
+		case "1":
+			sort = Sort.by("name").ascending();	
+			break;
+		case "2":
+			sort = Sort.by("name").descending();
+			break;
+		case "3":
+			sort = Sort.by("price").descending();	
+			break;
+		case "4":
+			sort =  Sort.by("price").ascending();	
+			break;
+		default:
+			sort = Sort.by("name").ascending();
+			break;
+		}
+
+		pageable = PageRequest.of(pageDto.getPageNo(), pageDto.getPageSize(),sort);
+		
+        return iProductRepository.pageProduct(pageDto.getFiltros().getCategoria(),pageDto.getFiltros().getNombre(),pageable);
          
 
 	}

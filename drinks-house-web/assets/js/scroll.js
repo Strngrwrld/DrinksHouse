@@ -1,22 +1,8 @@
+/**ESTE ARCHIVO JS TIENE COMO FINALIDAD, DETECTAR LOS MOVIMIENTOS DE LA PAGINA PARA REALIZAR LOS EFECTOS DE SCROLL*/
 $('document').ready(function() {
 
-    //Mostrar y ocultar btn volver arriba
-    //var volverArriba = $('#btnVolverArriba');
+    fixing('#nav', '#filter', '#000000', 'transparent')
 
-    $(window).on('scroll', function() {
-
-        var OffsetTop = $('#filter').offset().top;
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= OffsetTop / 2) {
-
-            $('#nav').css('background-color', '#00171F');
-        } else if (scroll <= OffsetTop / 2) {
-
-            $('#nav').css('background-color', 'transparent');
-
-        }
-    });
 
     //Movimiento suave de scroll Inicio y Volver Arriba
     $('a.volver-arriba').on('click', function(e) {
@@ -41,3 +27,21 @@ $('document').ready(function() {
     });
 
 });
+
+function fixing(bloque, altura, color1, color2) {
+
+    $(window).on('scroll', function() {
+
+        var OffsetTop = $(altura).offset().top;
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= OffsetTop / 2) {
+
+            $(bloque).css('background-color', color1);
+        } else if (scroll <= OffsetTop / 2) {
+
+            $(bloque).css('background-color', color2);
+
+        }
+    });
+}

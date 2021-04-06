@@ -40,4 +40,12 @@ public abstract class Resource<E> {
         response.setErrors(errors);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+	
+	protected ResponseEntity<ResponseDto<Page<E>>> emptyPage(List<String> errors) {
+		ResponseDto<Page<E>> response = new ResponseDto<>();
+		response.setCodError(201);
+		response.setDesError("Request invalido");
+        response.setErrors(errors);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

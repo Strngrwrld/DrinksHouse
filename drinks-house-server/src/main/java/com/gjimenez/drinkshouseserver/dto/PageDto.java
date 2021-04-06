@@ -1,10 +1,16 @@
 package com.gjimenez.drinkshouseserver.dto;
 
+import com.sun.istack.NotNull;
+
 public class PageDto {
 
+	@NotNull
 	private int pageNo;
+	@NotNull
 	private int pageSize;
+	@NotNull
 	private String sortBy;
+	@NotNull
 	private FiltrosDto filtros;
 	
 	public int getPageNo() {
@@ -31,6 +37,15 @@ public class PageDto {
 	public void setFiltros(FiltrosDto filtros) {
 		this.filtros = filtros;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "PageDto [pageNo=" + pageNo + ", pageSize=" + pageSize + ", sortBy=" + sortBy + ", filtros=" + filtros
+				+ "]";
+	}
+	
+	
 	
 	
 	
