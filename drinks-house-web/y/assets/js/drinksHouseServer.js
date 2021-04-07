@@ -15,7 +15,7 @@ $('document').ready(function() {
 
     //LLAMA API PAGINADO DE PRODUCTOS
     var request = {
-        pageNo: 0,
+        pageNo: $('#pageNo').text(),
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
@@ -63,7 +63,6 @@ $('#categorias').change(function() {
 
 $('#search').click(function() {
 
-
     var request = {
         pageNo: 0,
         pageSize: $('#pageSize').val(),
@@ -78,7 +77,6 @@ $('#search').click(function() {
 });
 
 $('#searchInput').on('keypress', function(e) {
-
 
     if (e.which != 13) {
         return
@@ -107,7 +105,7 @@ $('#anterior').click(function() {
 
     //PREPARANDO REQUEST
     var request = {
-        pageNo: $('#pageNo').text() - 2,
+        pageNo: $('#pageNo').text(),
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
@@ -139,6 +137,7 @@ $('#siguiente').click(function() {
     callProducts(request);
 });
 
+
 $('#pageSize').change(function() {
 
     var request = {
@@ -153,17 +152,6 @@ $('#pageSize').change(function() {
 
     callProducts(request);
 });
-
-
-//FUNCIONES GENERALES
-function redirectToDrinks() {
-
-    var seccionOT = $('#drinks').offset().top
-
-    $('html, body').stop().animate({
-        scrollTop: seccionOT - 125
-    }, 1000)
-}
 
 function callCategories() {
 
@@ -208,9 +196,6 @@ function callProducts(request) {
 
     //SE VUELVE A VACIAR SECTION
     $('#drinks').html('');
-
-
-    redirectToDrinks();
 
     //CARGA SPINNER
     agregarSpinner()
@@ -274,11 +259,6 @@ function callProducts(request) {
                     ${imagen}
                     <p class="nombre">${element.name}</p> 
                     <div class="precio"><p>S/. ${element.price}</p> ${descuento}
-                    </div>
-                    
-                    <div class="add_shopping">
-                    <span class="icon solid fab fa-shopping-cart"></span>
-                    <p>Comprar</p>
                     </div>
                     </article>
                     `);
