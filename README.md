@@ -14,18 +14,19 @@ Drinks House Server:
 Es un componente monolito de extensión WAR. Este componente fue desarrollado en lenguaje JAVA 11 y utilizando el Framework SPRING-BOOT.Adicionalmente se realizó conexión con una base de datos MySQL provista por Bsale. Tiene como objetivo proveer información requerida para los procesos del portal.
 Se desarrollaron y expusieron dos Api Rest (JSON) de consulta:
 
-1)	CONSULTA CATEGORIAS:
-URL: http://165.232.142.71/drinks-house-server/api/category
-TIPO PETICION: GET
-OBJETIVO: Listar las categorías de productos disponibles.
+	1)CONSULTA CATEGORIAS:
+	
+	URL: http://165.232.142.71/drinks-house-server/api/category
+	TIPO PETICION: GET
+	OBJETIVO: Listar las categorías de productos disponibles.
 
 
 
-2)	CONSULTA PRODUCTO:
+	2)CONSULTA PRODUCTO:
 
-URL: http://165.232.142.71/drinks-house-server/api/product
-TIPO PETICION: POST
-OBJETIVO: Obtener un paginado de productos filtrado por los siguientes criterios
+	URL: http://165.232.142.71/drinks-house-server/api/product
+	TIPO PETICION: POST
+	OBJETIVO: Obtener un paginado de productos filtrado por los siguientes criterios
 
 	> Categoría
 	> Nombre,
