@@ -27,9 +27,9 @@ URL: http://165.232.142.71/drinks-house-server/api/product
 TIPO PETICION: POST
 OBJETIVO: Obtener un paginado de productos filtrado por los siguientes criterios
 
-	Categoría
-	Nombre,
-	Orden solicitado.
+	> Categoría
+	> Nombre,
+	> Orden solicitado.
 
 Se adjunta postman con los request de las Apis antes mencionadas.
  
@@ -37,9 +37,10 @@ Se adjunta postman con los request de las Apis antes mencionadas.
 Drinks House:
 Este portal tiene como objetivo servir de interfaz gráfica para el proceso de compra de productos. Ha sido desarrollado con HTML, CSS Y JS. Se ha hecho uso de la librería JQuery para la codificación. Y para los iconos FontAwesome.
 Características generales del portal:
-	Filtro de orden por precio y nombre pensado par agilizar el proceso de compra del usuario
-	Paginado 10,15,20 elementos por página pensado para evitar lentitud en carga de información.
-	Carrito de compra flotante para simular proceso de compra
-	Listado de categorías en Drop Down List
-	Menú de búsqueda adaptado para mejorar la experiencia de búsqueda desde celular
-	Portal responsivo para Ordenadores, Tablets y Celulares
+
+   > Filtro de orden por precio y nombre pensado par agilizar el proceso de compra del usuario
+   > Paginado 10,15,20 elementos por página pensado para evitar lentitud en carga de información.
+   > Carrito de compra flotante para simular proceso de compra
+   > Listado de categorías en Drop Down List
+   > Menú de búsqueda adaptado para mejorar la experiencia de búsqueda desde celular
+   > Portal responsivo para Ordenadores, Tablets y Celulares
