@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/img/brands/1.png">
     <title>Drinks House</title>
 </head>
 
@@ -14,11 +14,11 @@
     <header id="header">
         <nav id="nav">
 
-            <div id="filter">
+            <section id="filter">
 
-                <h1 class="volver-arriba">DRINKS HOUSE</h1>
+                <h1>DRINKS HOUSE</h1>
 
-                <select id="categories">
+                <select id="categorias">
                     <option value="-1">Categorias</option>
                 </select>
 
@@ -34,19 +34,12 @@
                     <input type="text" id="searchInput" placeholder="¿Qué buscas?">
                     <span id="search" class="icon solid fab fa-search"></span>
                 </div>
-            </div>
 
-            <div id="hamburger">
-
-                <h1 class="volver-arriba">DRINKS HOUSE</h1>
-
-                <button id="hamburger_button">
-                    <span class="top-line"></span>
-                    <span class="middle-line"></span>
-                    <span class="bottom-line"></span>
-                </button>
-            </div>
-
+                <div id="shopping" class="shopping">
+                    <span class="icon solid fab fa-shopping-cart"></span>
+                    <p>Comprar</p>
+                </div>
+            </section>
         </nav>
 
         <div id="banner">
@@ -59,26 +52,6 @@
             </a>
         </div>
     </header>
-    <!--FILTRO DE BUSQUEDA VERSION MOVIL-->
-    <section id="filter_movil">
-
-        <div id="browser_movil">
-            <input id="search_movil" type="text" placeholder="¿Qué buscas?">
-            <span id="search_button_movil" class="icon solid fab fa-search"></span>
-        </div>
-
-        <select id="categories_movil">
-                <option value="-1">Categorias</option>
-        </select>
-
-        <select id="sortBy_movil">
-                <option value="-1">Ordenar Por</option>
-                <option value="1">Nombre A-z</option>
-                <option value="2">Nombre Z-a</option>
-                <option value="3">Precio Mayor a Menor</option>
-                <option value="4">Precio Menor a Mayor</option>
-            </select>
-    </section>
 
     <section id="titulo">
         <hr>
@@ -88,7 +61,6 @@
 
     <section id="drinks">
     </section>
-
     <section id="loading">
 
         <div id="spinner-wrapper" class='spinner-wrapper'>
@@ -97,12 +69,6 @@
         </div>
         <div id="mensaje" class="mensaje">
         </div>
-    </section>
-
-    <section id="shopping_card">
-        <p id="shopping_cant_text"></p>
-        <p id="shopping_message">A&uacute;n no agrega productos.</p>
-        <span class="icon solid fab fa-shopping-cart"></span>
     </section>
 
     <section id="paginado">
@@ -119,11 +85,6 @@
         <a id="anterior"><span class="icon solid fab fa-chevron-left"></span></a>
 
         <a id="siguiente"><span class="icon solid fab fa-chevron-right"></span></a>
-    </section>
-    <section id="pay">
-        <div id="pay_banner">
-
-        </div>
     </section>
     <section id="preFooter">
 
@@ -325,11 +286,7 @@
 </script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/prefixfree.min.js"></script>
-<script src="assets/js/drinksHouseServer.js"></script>
 <script src="assets/js/scroll.js"></script>
-<script src="assets/js/overlay.js"></script>
-<script src="assets/js/shoppingCar.js"></script>
-<script src="assets/js/slide.js"></script>
-<script src="assets//js/hamburger.js"></script>
+<script src="assets/js/drinksHouseServer.js"></script>
 
 </html>

@@ -1,20 +1,21 @@
 /**ESTE ARCHIVO JS TIENE COMO FINALIDAD, DETECTAR LOS MOVIMIENTOS DE LA PAGINA PARA REALIZAR LOS EFECTOS DE SCROLL*/
 $('document').ready(function() {
 
-    fixing('#nav', '#filter', '#000000', 'transparent')
+    $(window).on('scroll', function() {
 
+        var OffsetTop = $('#drinks').offset().top;
+        var scroll = $(window).scrollTop();
 
-    //Movimiento suave de scroll Inicio y Volver Arriba
-    $('a.volver-arriba').on('click', function(e) {
-        e.preventDefault();
+        if (scroll >= OffsetTop / 2) {
 
-        if ($(window).scrollTop != 0) {
-            $('html, body').stop().animate({
-                scrollTop: 0
-            }, 1000);
+            $('#nav').css('background-color', '#000000');
+        } else if (scroll <= 0) {
+
+            $('#nav').css('background-color', 'transparent');
+
         }
-
     });
+
 
     $('a.scroll-suave').on('click', function(e) {
         e.preventDefault();
@@ -25,23 +26,4 @@ $('document').ready(function() {
             scrollTop: seccionOT - 125
         }, 1000)
     });
-
 });
-
-function fixing(bloque, altura, color1, color2) {
-
-    $(window).on('scroll', function() {
-
-        var OffsetTop = $(altura).offset().top;
-        var scroll = $(window).scrollTop();
-
-        if (scroll >= OffsetTop / 2) {
-
-            $(bloque).css('background-color', color1);
-        } else if (scroll <= OffsetTop / 2) {
-
-            $(bloque).css('background-color', color2);
-
-        }
-    });
-}

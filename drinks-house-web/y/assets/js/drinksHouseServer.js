@@ -15,12 +15,12 @@ $('document').ready(function() {
 
     //LLAMA API PAGINADO DE PRODUCTOS
     var request = {
-        pageNo: 0,
+        pageNo: $('#pageNo').text(),
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#search').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
@@ -35,8 +35,8 @@ $('#sortBy').change(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#search').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
@@ -44,7 +44,7 @@ $('#sortBy').change(function() {
 });
 
 
-$('#categories').change(function() {
+$('#categorias').change(function() {
 
 
     var request = {
@@ -52,40 +52,24 @@ $('#categories').change(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#search').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
     callProducts(request);
 });
 
-$('#search_button_movil').click(function() {
-
-
-    var request = {
-        pageNo: 0,
-        pageSize: $('#pageSize').val(),
-        sortBy: $('#sortBy_movil').val(),
-        filtros: {
-            categoria: $('#categories_movil').val(),
-            nombre: $('#search_movil').val()
-        }
-    };
-
-    callProducts(request);
-});
 
 $('#search').click(function() {
 
-
     var request = {
         pageNo: 0,
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#searchInput').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
@@ -93,7 +77,6 @@ $('#search').click(function() {
 });
 
 $('#searchInput').on('keypress', function(e) {
-
 
     if (e.which != 13) {
         return
@@ -104,8 +87,8 @@ $('#searchInput').on('keypress', function(e) {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#searchInput').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
@@ -122,12 +105,12 @@ $('#anterior').click(function() {
 
     //PREPARANDO REQUEST
     var request = {
-        pageNo: $('#pageNo').text() - 2,
+        pageNo: $('#pageNo').text(),
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#search').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
@@ -146,13 +129,14 @@ $('#siguiente').click(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#search').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
     callProducts(request);
 });
+
 
 $('#pageSize').change(function() {
 
@@ -161,24 +145,13 @@ $('#pageSize').change(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categories').val(),
-            nombre: $('#search').val()
+            categoria: $('#categorias').val(),
+            nombre: $('#search').text()
         }
     };
 
     callProducts(request);
 });
-
-
-//FUNCIONES GENERALES
-function redirectToDrinks() {
-
-    var seccionOT = $('#drinks').offset().top
-
-    $('html, body').stop().animate({
-        scrollTop: seccionOT - 160
-    }, 2000)
-}
 
 function callCategories() {
 
@@ -199,10 +172,14 @@ function callCategories() {
                     //SE DECLARA DATA
                     var data = jsonResponse.data;
 
+
+                    //SE BUSCA EL ELEMENTO DE COMBOBOX - CATEGORIAS
+                    var categoria = document.getElementById('categorias');
+
                     //SE INSERTA OPCIONES DE CATEGORIA
                     data.forEach(element => {
-                        $('#categories').append(`<option value = "${element.id}"> ${capitalize(element.name)} </option>`);
-                        $('#categories_movil').append(`<option value = "${element.id}"> ${capitalize(element.name)} </option>`);
+                        categoria.innerHTML += `<option value = "${element.id}"> ${capitalize(element.name)} </option>`
+
                     });
                     console.info('Se cargaron las categorias correctamente');
                 });
@@ -219,9 +196,6 @@ function callProducts(request) {
 
     //SE VUELVE A VACIAR SECTION
     $('#drinks').html('');
-
-
-    redirectToDrinks();
 
     //CARGA SPINNER
     agregarSpinner()
@@ -285,11 +259,6 @@ function callProducts(request) {
                     ${imagen}
                     <p class="nombre">${element.name}</p> 
                     <div class="precio"><p>S/. ${element.price}</p> ${descuento}
-                    </div>
-                    
-                    <div class="add_shopping">
-                    <span class="icon solid fab fa-shopping-cart"></span>
-                    <p>A&ntilde;adir al carrito</p>
                     </div>
                     </article>
                     `);

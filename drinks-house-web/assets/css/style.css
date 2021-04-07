@@ -12,6 +12,10 @@ ul {
     list-style: none;
 }
 
+a {
+    color: white;
+}
+
 a:hover {
     cursor: pointer;
 }
@@ -22,7 +26,21 @@ a:hover {
 }
 
 .invisibility {
-    display: none;
+    display: none !important;
+}
+
+.visibility {
+    display: block !important;
+}
+
+input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+    padding: 1em;
+    margin: 0;
+    background-color: #ECECEC;
 }
 
 
@@ -64,7 +82,7 @@ a:hover {
 }
 
 .background-color-black {
-    background-color: #000000;
+    background-color: #000000 !important;
 }
 
 
@@ -75,16 +93,25 @@ a:hover {
     height: 100vh;
     background-image: url(../img/banner1.jpg);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     background-attachment: fixed;
+}
+
+#header::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    content: url("../img/banner1.jpg") url("../img/banner2.jpg") url("../img/banner3.jpg") url("../img/banner4.jpg");
 }
 
 #nav {
     width: 100%;
     color: white;
     position: fixed;
-    z-index: 3;
+    z-index: 4;
 }
 
 #nav h1 {
@@ -94,12 +121,146 @@ a:hover {
 }
 
 
-/*SECTION - FILTER */
+/*hamburger*/
+
+#hamburger {
+    width: 100%;
+    visibility: hidden;
+    display: none;
+}
+
+#hamburger button {
+    background: none;
+    border: 0px;
+    float: right;
+    cursor: pointer;
+    padding: 0px;
+    width: 60px;
+    height: 60px;
+}
+
+#hamburger button span {
+    border-radius: 5px;
+    background: white;
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    height: 2px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+button:focus {
+    outline: none;
+}
+
+#hamburger button.open .top-line {
+    animation-name: top-line-animation;
+}
+
+#hamburger button.open .middle-line {
+    animation-name: middle-line-animation;
+}
+
+#hamburger button.open .bottom-line {
+    animation-name: bottom-line-animation;
+}
+
+#hamburger button .top-line {
+    animation-name: top-line-animation-close;
+}
+
+#hamburger button .middle-line {
+    animation-name: middle-line-animation-close;
+}
+
+#hamburger button .bottom-line {
+    animation-name: bottom-line-animation-close;
+}
+
+@keyframes top-line-animation {
+    50%,
+    100% {
+        margin: 0 auto;
+        transform: translateY(2px) rotate(-45deg);
+    }
+}
+
+@keyframes bottom-line-animation {
+    50%,
+    100% {
+        margin: 0 auto;
+        transform: translateY(-2px) rotate(45deg);
+    }
+}
+
+@keyframes middle-line-animation {
+    20%,
+    100% {
+        margin: 0 auto;
+        width: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes top-line-animation-close {
+    0% {
+        margin: 0 auto;
+        transform: translateY(2px) rotate(-45deg);
+    }
+    50%,
+    100% {
+        margin: 5px auto;
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes middle-line-animation-close {
+    0% {
+        margin: 0 auto;
+        width: 0;
+        opacity: 0;
+    }
+    20%,
+    100% {
+        margin: 0 auto;
+        width: 60%;
+        opacity: 1;
+    }
+}
+
+@keyframes bottom-line-animation-close {
+    0% {
+        margin: 0 auto;
+        transform: translateY(-2px) rotate(45deg);
+    }
+    50%,
+    100% {
+        margin: 5px auto;
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes bottom-line-animation-close {
+    0% {
+        margin: 0 auto;
+        transform: translateY(-2px) rotate(45deg);
+    }
+    50%,
+    100% {
+        margin: 5px auto;
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+
+/*FILTER */
 
 #filter {
     width: 80%;
-    margin: 1em 4%;
+    padding: 1em 4%;
     border-radius: 4px;
+    cursor: pointer;
     text-align: center;
     display: flex;
 }
@@ -111,7 +272,8 @@ a:hover {
 #filter select {
     border: none;
     padding: 1em;
-    min-width: 15%;
+    min-width: 20%;
+    cursor: pointer;
     background-color: #ECECEC;
     margin-right: 1em;
 }
@@ -121,28 +283,60 @@ select:focus {
 }
 
 #browser {
-    min-width: 70%;
+    min-width: 75%;
     font-size: 1em;
     font-weight: bolder;
     border-radius: 2px;
     background-color: #ECECEC;
 }
 
+#filter h1 {
+    width: 10%;
+}
+
 #browser span {
     color: #000000;
 }
 
-#browser input {
-    width: 90%;
+input:focus {
+    outline: none;
+}
+
+
+/*FILTER MOVIL*/
+
+#filter_movil {
+    transition: all 0.5s;
+    position: fixed;
+    z-index: 3;
+    background-color: rgb(0, 0, 0, 0.96);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+#filter_movil select {
     border: none;
-    border-radius: 0px;
     padding: 1em;
-    margin: 0;
+    min-width: 90%;
+    margin: 1em 5%;
+    cursor: pointer;
+    background-color: #ECECEC;
+    margin-right: 1em;
+}
+
+#browser_movil {
+    min-width: 90%;
+    margin: 6em 5% 1em 5%;
+    font-weight: bolder;
+    border-radius: 2px;
     background-color: #ECECEC;
 }
 
-input:focus {
-    outline: none;
+#browser_movil span {
+    color: #000000;
 }
 
 #banner {
@@ -192,10 +386,15 @@ polygon.arrow-top {
 /*SECTION - TITULO */
 
 #titulo {
-    width: 100%;
+    width: 60%;
+    margin-left: 20%;
     text-align: center;
     margin-top: 5em;
     display: inline-block;
+}
+
+#titulo h3 {
+    margin: 1em 0;
 }
 
 
@@ -213,17 +412,20 @@ polygon.arrow-top {
 }
 
 #drinks article {
-    max-width: 24%;
-    min-width: 24%;
-    padding: 5em 0em;
+    max-width: 24.7%;
+    min-width: 24.7%;
+    margin: 5em 0em;
     text-align: center;
     display: inline-block;
+    position: relative;
+    transition: all 0.5s;
 }
 
 #drinks article img {
     max-width: 100%;
     min-width: 100%;
-    padding: 5em 0em;
+    max-height: 25em;
+    min-height: 25em;
     text-align: center;
     display: inline-block;
 }
@@ -232,8 +434,9 @@ polygon.arrow-top {
     font-weight: bolder;
 }
 
-#drinks article .precio p {
+#drinks article p {
     display: inline-block;
+    padding: 0.5em 0;
 }
 
 #drinks article .descuento {
@@ -241,8 +444,93 @@ polygon.arrow-top {
     color: #F32020;
 }
 
+#drinks article.toggle::before {
+    content: '';
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
-/*Loading*/
+#drinks article .add_shopping {
+    color: #FFFFFF;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    position: relative;
+    padding: 1em 0;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.colors {
+    color: #FFFFFF !important;
+    background-color: #000000 !important;
+}
+
+
+/*SECTION - SHOPPING CAR*/
+
+#shopping_card {
+    width: 8em;
+    transition: all 0.5s;
+    position: fixed;
+    text-align: right;
+    z-index: 3;
+    right: 4%;
+    bottom: 5%;
+}
+
+#shopping_card>#shopping_cant_text {
+    width: fit-content;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    background-color: #00A8E8;
+    padding: 0.5em 0.6em;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    position: absolute;
+    z-index: 4;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+#shopping_card>#shopping_message {
+    transition: all 0.5s;
+    text-align: left;
+    width: fit-content;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    background-color: #000000;
+    padding: 0.6em 0.9em;
+    border-radius: 4px;
+    -webkit-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    position: absolute;
+    z-index: 4;
+    right: 4em;
+    top: -4em;
+}
+
+#shopping_card span {
+    font-size: 1.8em;
+    color: #FFFFFF;
+    background-color: #000000;
+    padding: 0.7em;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+}
+
+
+/*LOADING*/
 
 #loading {
     width: 80%;
@@ -325,6 +613,7 @@ polygon.arrow-top {
     border: none;
     padding: 5px;
     margin: 0em 2em;
+    cursor: pointer;
     width: 4%;
 }
 
@@ -395,4 +684,131 @@ polygon.arrow-top {
     font-size: 0.8em;
     margin-right: 2em;
     color: rgba(255, 255, 255, 0.4);
+}
+
+
+/*MEDIA QUERYS*/
+
+
+/* XLarge */
+
+@media screen and (max-width: 1800px) {
+    /*HEADER
+    #header {
+        height: 60vh;
+    }
+    #banner {
+        top: 50%;
+    }
+    
+    #filter {
+        width: 80%;
+        padding: 1em 1em;
+        margin: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+    }
+    #filter .shopping {
+        margin-left: 1em;
+    }*/
+}
+
+
+/* Large */
+
+@media screen and (max-width: 1280px) {
+    #paginado select {
+        width: 7%;
+    }
+    #drinks article {
+        max-width: 33%;
+        min-width: 33%;
+    }
+}
+
+
+/* Medium */
+
+@media screen and (max-width: 980px) {
+    #preFooter h3 {
+        font-size: 0.7em;
+    }
+    #preFooter li {
+        font-size: 0.8em;
+    }
+    #browser {
+        min-width: 80%;
+    }
+    #filter {
+        width: 75%;
+    }
+    #filter h1 {
+        font-size: 1em;
+    }
+}
+
+
+/* Small */
+
+@media screen and (max-width: 736px) {
+    #filter {
+        display: none;
+    }
+    #hamburger {
+        visibility: visible;
+        display: block;
+    }
+    #hamburger h1 {
+        width: 10%;
+        font-size: 1em;
+        float: left;
+        margin: 1em;
+    }
+    /*HEADER*/
+    #header {
+        height: 40vh;
+        background-attachment: scroll;
+    }
+    #banner {
+        display: none;
+    }
+    #titulo {
+        margin-top: 4em;
+        font-size: 0.5em;
+    }
+    #drinks article {
+        max-width: 48%;
+        min-width: 48%;
+    }
+    #paginado select {
+        width: 14%;
+    }
+    #footer a {
+        font-size: 0.6em;
+        display: inline-block;
+    }
+}
+
+
+/* XSmall */
+
+@media screen and (max-width: 480px) {
+    /*HEADER*/
+    #header {
+        height: 20vh;
+    }
+    #paginado {
+        font-size: 0.5em;
+    }
+    #paginado select {
+        width: 20%;
+    }
+    #preFooter h3 {
+        font-size: 0.5em;
+    }
+    #preFooter li {
+        font-size: 0.6em;
+    }
 }
