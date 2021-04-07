@@ -18,7 +18,7 @@
 
                 <h1 class="volver-arriba">DRINKS HOUSE</h1>
 
-                <select id="categorias">
+                <select id="categories">
                     <option value="-1">Categorias</option>
                 </select>
 
@@ -40,7 +40,7 @@
 
                 <h1 class="volver-arriba">DRINKS HOUSE</h1>
 
-                <button>
+                <button id="hamburger_button">
                     <span class="top-line"></span>
                     <span class="middle-line"></span>
                     <span class="bottom-line"></span>
@@ -59,6 +59,26 @@
             </a>
         </div>
     </header>
+    <!--FILTRO DE BUSQUEDA VERSION MOVIL-->
+    <section id="filter_movil">
+
+        <div id="browser_movil">
+            <input id="search_movil" type="text" placeholder="¿Qué buscas?">
+            <span id="search_button_movil" class="icon solid fab fa-search"></span>
+        </div>
+
+        <select id="categories_movil">
+                <option value="-1">Categorias</option>
+        </select>
+
+        <select id="sortBy_movil">
+                <option value="-1">Ordenar Por</option>
+                <option value="1">Nombre A-z</option>
+                <option value="2">Nombre Z-a</option>
+                <option value="3">Precio Mayor a Menor</option>
+                <option value="4">Precio Menor a Mayor</option>
+            </select>
+    </section>
 
     <section id="titulo">
         <hr>
@@ -78,13 +98,13 @@
         <div id="mensaje" class="mensaje">
         </div>
     </section>
-    <!-- 
-    <div id="shopping" class="shopping">
-        <a href="#drinks" class="scroll-suave">
-            <span class="icon solid fab fa-shopping-cart"></span>
-            <p id="cantidad_comprar">Comprar</p>
-        </a>
-    </div> -->
+
+    <section id="shopping_card">
+        <p id="shopping_cant_text"></p>
+        <p id="shopping_message">A&uacute;n no agrega productos.</p>
+        <span class="icon solid fab fa-shopping-cart"></span>
+    </section>
+
     <section id="paginado">
         <p>Elementos por p&aacute;gina</p>
         <select id="pageSize">
@@ -310,5 +330,6 @@
 <script src="assets/js/overlay.js"></script>
 <script src="assets/js/shoppingCar.js"></script>
 <script src="assets/js/slide.js"></script>
+<script src="assets//js/hamburger.js"></script>
 
 </html>

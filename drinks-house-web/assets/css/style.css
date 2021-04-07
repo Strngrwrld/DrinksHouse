@@ -26,7 +26,21 @@ a:hover {
 }
 
 .invisibility {
-    display: none;
+    display: none !important;
+}
+
+.visibility {
+    display: block !important;
+}
+
+input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+    padding: 1em;
+    margin: 0;
+    background-color: #ECECEC;
 }
 
 
@@ -68,7 +82,7 @@ a:hover {
 }
 
 .background-color-black {
-    background-color: #000000;
+    background-color: #000000 !important;
 }
 
 
@@ -97,7 +111,7 @@ a:hover {
     width: 100%;
     color: white;
     position: fixed;
-    z-index: 3;
+    z-index: 4;
 }
 
 #nav h1 {
@@ -240,7 +254,7 @@ button:focus {
 }
 
 
-/*SECTION - FILTER */
+/*FILTER */
 
 #filter {
     width: 80%;
@@ -284,18 +298,45 @@ select:focus {
     color: #000000;
 }
 
-#browser input {
-    width: 90%;
-    height: 100%;
+input:focus {
+    outline: none;
+}
+
+
+/*FILTER MOVIL*/
+
+#filter_movil {
+    transition: all 0.5s;
+    position: fixed;
+    z-index: 3;
+    background-color: rgb(0, 0, 0, 0.96);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+#filter_movil select {
     border: none;
-    border-radius: 0px;
     padding: 1em;
-    margin: 0;
+    min-width: 90%;
+    margin: 1em 5%;
+    cursor: pointer;
+    background-color: #ECECEC;
+    margin-right: 1em;
+}
+
+#browser_movil {
+    min-width: 90%;
+    margin: 6em 5% 1em 5%;
+    font-weight: bolder;
+    border-radius: 2px;
     background-color: #ECECEC;
 }
 
-input:focus {
-    outline: none;
+#browser_movil span {
+    color: #000000;
 }
 
 #banner {
@@ -430,7 +471,66 @@ polygon.arrow-top {
 }
 
 
-/*Loading*/
+/*SECTION - SHOPPING CAR*/
+
+#shopping_card {
+    width: 8em;
+    transition: all 0.5s;
+    position: fixed;
+    text-align: right;
+    z-index: 3;
+    right: 4%;
+    bottom: 5%;
+}
+
+#shopping_card>#shopping_cant_text {
+    width: fit-content;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    background-color: #00A8E8;
+    padding: 0.5em 0.6em;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    position: absolute;
+    z-index: 4;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+#shopping_card>#shopping_message {
+    transition: all 0.5s;
+    text-align: left;
+    width: fit-content;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    background-color: #000000;
+    padding: 0.6em 0.9em;
+    border-radius: 4px;
+    -webkit-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    position: absolute;
+    z-index: 4;
+    right: 4em;
+    top: -4em;
+}
+
+#shopping_card span {
+    font-size: 1.8em;
+    color: #FFFFFF;
+    background-color: #000000;
+    padding: 0.7em;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+    box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.67);
+}
+
+
+/*LOADING*/
 
 #loading {
     width: 80%;
@@ -685,6 +785,10 @@ polygon.arrow-top {
     #paginado select {
         width: 14%;
     }
+    #footer a {
+        font-size: 0.6em;
+        display: inline-block;
+    }
 }
 
 
@@ -706,9 +810,5 @@ polygon.arrow-top {
     }
     #preFooter li {
         font-size: 0.6em;
-    }
-    #footer a {
-        font-size: 0.6em;
-        display: inline-block;
     }
 }

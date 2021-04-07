@@ -19,8 +19,8 @@ $('document').ready(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#search').val()
         }
     };
 
@@ -35,8 +35,8 @@ $('#sortBy').change(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#search').val()
         }
     };
 
@@ -44,7 +44,7 @@ $('#sortBy').change(function() {
 });
 
 
-$('#categorias').change(function() {
+$('#categories').change(function() {
 
 
     var request = {
@@ -52,14 +52,29 @@ $('#categorias').change(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#search').val()
         }
     };
 
     callProducts(request);
 });
 
+$('#search_button_movil').click(function() {
+
+
+    var request = {
+        pageNo: 0,
+        pageSize: $('#pageSize').val(),
+        sortBy: $('#sortBy_movil').val(),
+        filtros: {
+            categoria: $('#categories_movil').val(),
+            nombre: $('#search_movil').val()
+        }
+    };
+
+    callProducts(request);
+});
 
 $('#search').click(function() {
 
@@ -69,8 +84,8 @@ $('#search').click(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#searchInput').val()
         }
     };
 
@@ -89,8 +104,8 @@ $('#searchInput').on('keypress', function(e) {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#searchInput').val()
         }
     };
 
@@ -111,8 +126,8 @@ $('#anterior').click(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#search').val()
         }
     };
 
@@ -131,8 +146,8 @@ $('#siguiente').click(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#search').val()
         }
     };
 
@@ -146,8 +161,8 @@ $('#pageSize').change(function() {
         pageSize: $('#pageSize').val(),
         sortBy: $('#sortBy').val(),
         filtros: {
-            categoria: $('#categorias').val(),
-            nombre: $('#search').text()
+            categoria: $('#categories').val(),
+            nombre: $('#search').val()
         }
     };
 
@@ -161,8 +176,8 @@ function redirectToDrinks() {
     var seccionOT = $('#drinks').offset().top
 
     $('html, body').stop().animate({
-        scrollTop: seccionOT - 125
-    }, 1000)
+        scrollTop: seccionOT - 160
+    }, 2000)
 }
 
 function callCategories() {
@@ -184,14 +199,10 @@ function callCategories() {
                     //SE DECLARA DATA
                     var data = jsonResponse.data;
 
-
-                    //SE BUSCA EL ELEMENTO DE COMBOBOX - CATEGORIAS
-                    var categoria = document.getElementById('categorias');
-
                     //SE INSERTA OPCIONES DE CATEGORIA
                     data.forEach(element => {
-                        categoria.innerHTML += `<option value = "${element.id}"> ${capitalize(element.name)} </option>`
-
+                        $('#categories').append(`<option value = "${element.id}"> ${capitalize(element.name)} </option>`);
+                        $('#categories_movil').append(`<option value = "${element.id}"> ${capitalize(element.name)} </option>`);
                     });
                     console.info('Se cargaron las categorias correctamente');
                 });
@@ -278,7 +289,7 @@ function callProducts(request) {
                     
                     <div class="add_shopping">
                     <span class="icon solid fab fa-shopping-cart"></span>
-                    <p>Comprar</p>
+                    <p>A&ntilde;adir al carrito</p>
                     </div>
                     </article>
                     `);

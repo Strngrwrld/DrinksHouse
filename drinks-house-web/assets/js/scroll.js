@@ -17,18 +17,6 @@ $('document').ready(function() {
     });
 
 
-    //Movimiento suave de scroll Inicio y Volver Arriba
-    $('h1.volver-arriba').on('click', function(e) {
-        e.preventDefault();
-
-        if ($(window).scrollTop != 0) {
-            $('html, body').stop().animate({
-                scrollTop: 0
-            }, 1000);
-        }
-
-    });
-
     $('a.scroll-suave').on('click', function(e) {
         e.preventDefault();
 
